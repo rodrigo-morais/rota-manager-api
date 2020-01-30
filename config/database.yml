@@ -1,0 +1,20 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  username: postgres
+  password:
+  pool: 5
+
+development:
+  <<: *default
+  database: rota_dev
+
+
+test:
+  <<: *default
+  database: rota_test
+
+production:
+  <<: *default
+  database: rota_prod
