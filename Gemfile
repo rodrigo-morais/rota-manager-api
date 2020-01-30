@@ -24,6 +24,8 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'pg', '~> 1.2', '>= 1.2.2'
 
+gem 'active_model_serializers'
+
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
 
@@ -32,6 +34,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails', '~> 3.9'
   gem 'factory_bot_rails'
+  gem 'database_cleaner'
 end
 
 group :development do
