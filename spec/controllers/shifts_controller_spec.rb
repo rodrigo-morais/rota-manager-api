@@ -1,15 +1,7 @@
 require "rails_helper"
 
 RSpec.describe "Shifts API", type: :request do
-  let!(:my_shifts) do
-    create :shift,
-      role_id: 1,
-      start_time: DateTime.new(2001,2,3,4,5,6),
-      end_time: DateTime.new(2001,2,3,6,0,0),
-      staff_required: 5,
-      number_of_invited_staff: 3,
-      job_type: "Waiting staff"
-  end
+  let!(:my_shifts) { create :shift }
 
   it "responds with 200" do
     get "/shifts"
@@ -26,5 +18,18 @@ RSpec.describe "Shifts API", type: :request do
       number_of_invited_staff: 3,
       jobType: "Waiting staff"
     }].to_json)
+  end
+
+  context "filter by job type" do
+    it "returns an empty list of shifts when the job type doesn't exist" do
+      get "/shifts?jobType=Barista"
+      expect(JSON.parse(response.body)).to be_empty
+    end
+
+    it "returns all shifts with the job type given" do
+      create(:shift, :barista)
+      get "/shifts?jobType=Barista"
+      expect(JSON.parse(response.body).first["jobType"]).to eq("Barista")
+    end
   end
 end
