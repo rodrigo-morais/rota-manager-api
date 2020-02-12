@@ -1,4 +1,6 @@
 class Shift < ApplicationRecord
+  has_many :invited_contracts, primary_key: :role_id, foreign_key: :role_id
+
   scope :job_type, -> job_type { where job_type: job_type  }
   scope :start_time, -> period { where("TO_CHAR(start_time::Time, 'AM') = ?", period&.upcase)  }
 

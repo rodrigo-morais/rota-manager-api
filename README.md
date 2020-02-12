@@ -1,24 +1,56 @@
-# README
+# Catapult API
+This is a simple API in Ruby on Rails to get rota data.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## To execute
 
-Things you may want to cover:
+In terminal execute:
 
-* Ruby version
+```sh
+$ rails s
+```
 
-* System dependencies
+## To create the database
 
-* Configuration
+In terminal execute:
 
-* Database creation
+```sh
+$ rake db:create db:migrate db:seed
+```
 
-* Database initialization
+## To run the tests
 
-* How to run the test suite
+In terminal execute:
 
-* Services (job queues, cache servers, search engines, etc.)
+```sh
+$ rspec
+```
 
-* Deployment instructions
+## Endpoints
 
-* ...
+### GET all shifts
+
+Get all shifts.
+
+```
+http://localhost:3000/shifts
+```
+
+It is possible to filter the shifts by job type and start time period:
+```
+?jobType=Barista
+?period=am
+?jobType=Barista&period=am
+```
+
+### GET all invited contracts
+
+Get all invited contracts.
+
+```
+http://localhost:3000/invited contracts
+```
+
+It is possible to filter the invited contracts by role id:
+```
+?roleId=2
+```

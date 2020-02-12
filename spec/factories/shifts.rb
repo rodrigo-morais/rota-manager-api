@@ -23,5 +23,9 @@ FactoryBot.define do
       start_time { DateTime.new(2001,2,3,14,5,6) }
       job_type { "Waiting staff" }
     end
+
+    trait :role_2 do
+      role_id { 2 }
+    end
   end
 end
