@@ -1,4 +1,4 @@
-# Catapult API
+# Rota Manager API
 This is a simple API in Ruby on Rails to get rota data.
 
 ## To execute
